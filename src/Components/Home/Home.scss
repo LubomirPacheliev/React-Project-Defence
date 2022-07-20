@@ -1,4 +1,4 @@
-@import '../index.scss';
+@import '../mixins.scss';
 
 header.home-header {
     @include setFlex(column, center, center);
