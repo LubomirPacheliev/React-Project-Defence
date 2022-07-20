@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
@@ -7,13 +8,13 @@ const Header = () => {
             <h1 className='nav-header-h1'>grimoire</h1>
             <nav className='nav-header-nav'>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Collections</a></li>
-                    <li><a href="#">Marketplace</a></li>
-                    <li><a href="#">Library</a></li>
-                    <li><a href="#">Forum</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/collections">Collections</Link></li>
+                    <li><Link to="/marketplace">Marketplace</Link></li>
+                    <li><Link to="/library">Library</Link></li>
+                    <li><Link to="/forum">Forum</Link></li>
+                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/register">Register</Link></li>
                 </ul>
             </nav>
         </header>

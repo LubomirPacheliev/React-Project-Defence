@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Register.scss';
 
 // TODO: Notification Component
@@ -21,7 +22,7 @@ const Register = () => {
 
                 <input type="submit" value="Register" />
                 <div class="card-already-have-account">
-                    <a href='/login'>Already have an account?</a>
+                    <Link to='/login'>Already have an account?</Link>
                 </div>
             </form>
         </section>
