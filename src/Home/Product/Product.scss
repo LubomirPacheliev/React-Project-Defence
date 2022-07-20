@@ -1,0 +1,15 @@
+@import '../../index.scss';
+
+article.first-collection {
+    width: 40vw;
+    height: 70vh;
+    background-color: red;
+}
+
+article.collection {
+    @include setFlex(column, center, center);
+    width: 15vw;
+    height: 23vh;
+    margin: 5px 15px;
+    background-color: red;
+}

@@ -1,14 +1,9 @@
-@mixin setFlex($direction, $justify, $align) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
-}
+@import '../index.scss';
 
 .nav-header {
     min-height: 150px;
     height: 10%;
-    min-width: 100vw;
+    max-width: 100vw;
     padding: 20px 5 0px;
     @include setFlex(column, center, center);
 

@@ -1,0 +1,48 @@
+@import '../index.scss';
+
+header.home-header {
+    @include setFlex(column, center, center);
+    padding: 5em;
+
+    .home-h1 {
+        font-size: 2rem;
+        font-weight: 200;
+        margin-bottom: 0.5em;
+    }
+
+    .home-p {
+        font-size: 18px;
+    }
+}
+
+h2.section-h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    transform: rotate(-90deg);
+}
+
+section.collections {
+    @include setFlex(row, flex-start, center);
+    padding: 1em 5em;
+
+    h2 {
+        position: relative;
+        left: 3em;
+    }
+}
+
+section.marketplace {
+    @include setFlex(row, center, center);
+    padding: 5em;
+
+    article {
+        @include setFlex(column, center, center);
+        margin-right: 8em;
+    }
+
+    img {
+        max-width: 30vw;
+        max-height: 30vh;
+        margin: 5em;
+    }
+}
