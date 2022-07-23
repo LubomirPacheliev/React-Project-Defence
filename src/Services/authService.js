@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-const apiURL = `http://localhost:4000`;
+const apiURL = `http://localhost:3000`;
 
 const registerUser = async (username, email, password, repassword) => {
     try {
@@ -41,7 +41,12 @@ const loginUser = async (email, password) => {
     }
 }
 
+const logOutUser = async () => {
+
+}
+
 export {
     registerUser,
-    loginUser
+    loginUser,
+    logOutUser
 };
