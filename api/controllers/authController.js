@@ -18,7 +18,7 @@ router.post('/api/register', async (req, res) => {
 });
 
 router.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password } = await uriService.decodeURIBody(req.body); // TODO: This is prob the worst possible way to receive X-www-form-urlencoded
 
     try {
         const token = await userService.loginUser(email, password);
@@ -26,6 +26,8 @@ router.post('/api/login', async (req, res) => {
     } catch (e) {
         console.error(e);
     }
+
+    res.end();
 })
 
 router.get('/logout', (req, res) => {

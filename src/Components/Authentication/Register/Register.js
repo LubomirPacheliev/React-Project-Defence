@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Register.scss';
+
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../../Services/authService';
 
-// TODO: Field requirements for password
-const Register = () => {
+const Register = () => { // TODO: Field requirements for password
     const navigate = useNavigate();
+
     const onSubmit = async e => {
         e.preventDefault();
         const username = e.target.username.value;
