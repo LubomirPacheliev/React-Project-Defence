@@ -1,0 +1,27 @@
+@import '../mixins.scss';
+
+section.collection {
+    @include setFlex(column, center, flex-start);
+    padding: 5em 20em;
+
+    h1 {
+        padding-left: 4em;
+    }
+
+    h1:last-of-type {
+        font-size: 1.5em;
+        font-weight: 200;
+    }
+
+    .create {
+        align-self: flex-end;
+        position: relative;
+        right: 6em;
+        bottom: 2em;
+    }
+
+    section.books {
+        @include setFlex(row, center, flex-start);
+        flex-wrap: wrap;
+    }
+}
