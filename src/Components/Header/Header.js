@@ -11,11 +11,26 @@ const Header = () => {
         setCookie(false);
     }
 
-    useEffect(async () => {
-        const res = await validateJWT();
-        if (!res) setCookie(false);
-        setCookie(res.validated);
-    }, []);
+    const authenticateUser = async () => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        try {
+            const res = await validateJWT(signal);
+            if (!res) setCookie(false);;
+            setCookie(res.validated);
+        } catch (e) {
+            if (e.name === 'AbortError') {
+                console.log('successfully aborted');
+            } else {
+                console.error(e);
+            }
+        }
+
+        return () => controller.abort();
+    }
+
+    useEffect(() => authenticateUser, []);
 
     return (
         <header className='nav-header'>
