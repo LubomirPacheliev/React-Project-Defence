@@ -11,8 +11,10 @@ const registerUser = async (username, email, password) => {
     const user = new userModel({
         username: username,
         email: email,
-        password: hash
+        password: password
     });
+    await user.validate();
+    user.password = hash;
     await user.save();
 
     const token = await generateJWT(user);

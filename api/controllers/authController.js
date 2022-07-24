@@ -10,7 +10,6 @@ router.post('/api/register', async (req, res) => {
     try {
         const token = await userService.registerUser(username, email, password);
         res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
-        res.cookie(COOKIE_SESSION_NAME + 2, true, { httpOnly: false });
     } catch (e) {
         console.error(e);
     }
@@ -24,7 +23,6 @@ router.post('/api/login', async (req, res) => {
     try {
         const token = await userService.loginUser(email, password);
         res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
-        res.cookie(COOKIE_SESSION_NAME + 2, true, { httpOnly: false });
     } catch (e) {
         console.error(e);
     }
