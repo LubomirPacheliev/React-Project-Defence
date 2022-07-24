@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { logoutUser, validateJWT } from '../../Services/authService';
+import { logoutUser } from '../../Services/authService';
+import { useAuthenticator as callAuthenticator } from '../../Hooks/userHooks';
 import './Header.scss';
 
 const Header = () => {
@@ -12,22 +13,7 @@ const Header = () => {
     }
 
     const authenticateUser = async () => {
-        const controller = new AbortController();
-        const signal = controller.signal;
-
-        try {
-            const res = await validateJWT(signal);
-            if (!res) setCookie(false);;
-            setCookie(res.validated);
-        } catch (e) {
-            if (e.name === 'AbortError') {
-                console.log('successfully aborted');
-            } else {
-                console.error(e);
-            }
-        }
-
-        return () => controller.abort();
+        await callAuthenticator(setCookie)
     }
 
     useEffect(() => authenticateUser, []);
