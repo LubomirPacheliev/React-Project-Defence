@@ -41,12 +41,30 @@ const loginUser = async (email, password) => {
     }
 }
 
-const logOutUser = async () => {
+const logoutUser = async () => {
+    try {
+        await fetch(`${apiURL}/api/logout`);
+    } catch (e) {
+        console.error(e);
+    }
+}
 
+const validateJWT = async () => {
+    try {
+        const res = await fetch(`${apiURL}/api/validate`);
+        if (!res.ok) throw new Error('Get failed.');
+        const { msg, validated } = JSON.parse(res.body);
+        if (!msg && !validated) return false;
+        if (msg) return false;
+        return { validated: validated };
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 export {
     registerUser,
     loginUser,
-    logOutUser
+    logoutUser,
+    validateJWT
 };

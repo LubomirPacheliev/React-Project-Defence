@@ -32,8 +32,25 @@ router.post('/api/login', async (req, res) => {
     res.end();
 })
 
-router.get('/logout', (req, res) => {
+router.get('/api/logout', (req, res) => {
     res.clearCookie(COOKIE_SESSION_NAME);
+    res.end();
+});
+
+router.get('/api/validate', async (req, res) => {
+    const cookies = req.cookies;
+    const jwtCookie = cookies[COOKIE_SESSION_NAME];
+
+    try {
+        if (!jwtCookie) res.json({}).end();
+        const decoded = (await userService.validateJWT(jwtCookie))[0];
+        if (!decoded) res.json({ msg: "Auth cookie is not valid." }).end();
+        res.json({ validated: jwtCookie });
+    } catch (e) {
+        console.error(e);
+    }
+
+    res.end();
 });
 
 module.exports = router;

@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+import { logoutUser, validateJWT } from '../../Services/authService';
 import './Header.scss';
 
 const Header = () => {
-    const cookieName = 'authman2';
-    const [cookies, setCookie, removeCookie] = useCookies([cookieName]);
+    const [cookie, setCookie] = useState(false);
 
     const handleLogout = async () => {
-        removeCookie(cookieName);
+        await logoutUser();
+        setCookie(false);
     }
+
+    useEffect(async () => {
+        const res = await validateJWT();
+        if (!res) setCookie(false);
+        setCookie(res.validated);
+    }, []);
 
     return (
         <header className='nav-header'>
@@ -22,8 +28,8 @@ const Header = () => {
                     <li><Link to="/library">Library</Link></li>
                     <li><Link to="/forum">Forum</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
-                    {!cookies[cookieName] && <li><Link to="/login">Login</Link></li>}
-                    {!cookies[cookieName] || <li><Link to="/" onClick={handleLogout}>Logout</Link></li>}
+                    {!cookie && <li><Link to="/login">Login</Link></li>}
+                    {!cookie || <li><Link to="/" onClick={handleLogout}>Logout</Link></li>}
                 </ul>
             </nav>
         </header>

@@ -44,9 +44,27 @@ const generateJWT = async user => {
     }
 }
 
+const validateJWT = async token => {
+    try {
+        const decoded = await jwt.verify(token, SECRET, [{ complete: true }, (err, token) => {
+            if (err) throw new Error(`JWT Verify Excpetion: ${err}`);
+            return token;
+        }]);
+
+        if (!decoded) throw new Error(`JWT verification didn't work.`);
+
+        return [decoded];
+    } catch (e) {
+        console.error(e);
+    }
+
+    return [];
+}
+
 module.exports = {
     registerUser,
     loginUser,
     findUserByUsername: findUserByEmail,
-    generateJWT
+    generateJWT,
+    validateJWT
 }

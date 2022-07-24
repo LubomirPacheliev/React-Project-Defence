@@ -19,7 +19,7 @@ const Register = () => { // TODO: Field requirements for password
         return res;
     }
 
-    return (
+    return ( // TODO: type password && autocomplete off - valio
         <section className="register-page">
             <form onSubmit={onSubmit}>
                 <label htmlFor="username">Username</label>
