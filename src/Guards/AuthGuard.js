@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from "react-router-dom"
-import { useAuthenticator as callAuthenticator } from '../../Hooks/userHooks';
+import { useAuthenticator as callAuthenticator } from '../Hooks/userHooks';
 
 const AuthGuard = ({ children }) => {
     const [isAuth, setAuth] = useState();

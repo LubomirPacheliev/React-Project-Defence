@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AuthGuard from "./Components/Guards/AuthGuard";
+import AuthGuard from "./Guards/AuthGuard";
 
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
