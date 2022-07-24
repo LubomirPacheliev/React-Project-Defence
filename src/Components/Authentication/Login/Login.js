@@ -14,6 +14,7 @@ const Login = () => {
         const password = e.target.password.value;
         const res = await loginUser(email, password); // TODO: Notification Component
         if (res.ok) navigate('/');
+        window.location.reload();
         return res;
     }
 

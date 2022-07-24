@@ -16,6 +16,7 @@ const Register = () => { // TODO: Field requirements for password
         const repassword = e.target.repassword.value;
         const res = await registerUser(username, email, password, repassword); // TODO: Notification Component
         if (res.ok) navigate('/');
+        window.location.reload();
         return res;
     }
 
