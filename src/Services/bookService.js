@@ -16,9 +16,26 @@ const createBook = async data => {
         return res;
     } catch (e) {
         console.error(e);
+        return e;
+    }
+}
+
+const getAllBooks = async () => {
+    try {
+        const res = await fetch(`${apiURL}/api/books`, {
+            mode: "cors",
+            credentials: "include"
+        });
+        if (!res.ok) throw new Error('Get operation failed.');
+        const books = await res.json(res.body);
+        return books;
+    } catch (e) {
+        console.error(e);
+        return e;
     }
 }
 
 export {
-    createBook
+    createBook,
+    getAllBooks
 };

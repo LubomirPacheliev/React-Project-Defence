@@ -22,6 +22,7 @@ const registerUser = async (username, email, password, repassword) => {
         return res;
     } catch (e) {
         console.error(e);
+        return e;
     }
 }
 
@@ -43,6 +44,7 @@ const loginUser = async (email, password) => {
         return res;
     } catch (e) {
         console.error(e);
+        return e;
     }
 }
 
@@ -54,6 +56,7 @@ const logoutUser = async () => {
         });
     } catch (e) {
         console.error(e);
+        return e;
     }
 }
 
@@ -71,6 +74,7 @@ const validateJWT = async signal => {
         return { validated: validated };
     } catch (e) {
         console.error(e);
+        return e;
     }
 }
 

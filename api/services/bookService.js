@@ -11,7 +11,7 @@ const createBook = async (data, user) => {
     }
 }
 
-const getBooks = async () => {
+const getAllBooks = async () => {
     const books = await bookModel.find({});
     return books;
 }
@@ -23,5 +23,5 @@ const findBookByOwner = async owner => {
 
 module.exports = {
     createBook,
-    getBooks
+    getAllBooks
 };
