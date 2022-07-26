@@ -47,6 +47,8 @@ const generateJWT = async user => {
 }
 
 const validateJWT = async token => {
+    if (!token) return [];
+
     try {
         const decoded = await jwt.verify(token, SECRET, [{ complete: true }, (err, token) => {
             if (err) throw new Error(`JWT Verify Excpetion: ${err}`);

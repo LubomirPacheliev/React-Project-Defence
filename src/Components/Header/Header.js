@@ -10,10 +10,11 @@ const Header = () => {
     const handleLogout = async () => {
         await logoutUser();
         setCookie(false);
+        window.location.reload();
     }
 
     const authenticateUser = async () => {
-        await callAuthenticator(setCookie)
+        await callAuthenticator(setCookie);
     }
 
     useEffect(() => authenticateUser, []);

@@ -6,7 +6,7 @@ const useAuthenticator = async (setCookiePresence) => { // ! Supposed to be used
 
     try {
         const res = await validateJWT(signal);
-        if (!res) setCookiePresence(false);;
+        if (!res) setCookiePresence(false);
         setCookiePresence(res.validated);
     } catch (e) {
         if (e.name === 'AbortError') {

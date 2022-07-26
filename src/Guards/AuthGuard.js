@@ -13,8 +13,8 @@ const AuthGuard = ({ children }) => {
 
     useEffect(() => authenticateUser, []);
     useEffect(() => {
-        if ((location.pathname === '/login' || location.pathname === '/register') && !isAuth) navigate("/");
-    }, [location.pathname]);
+        if ((location.pathname === '/login' || location.pathname === '/register') && isAuth) navigate("/");
+    }, [location.pathname, isAuth]); // TODO: Having 2 deps really slows things down, figure it out
 
     return children;
 }
