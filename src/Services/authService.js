@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
-const apiURL = `http://localhost:4000`;
+import { apiURL } from './apiURL';
 
+// TODO: catch blocks should do more than just log errors
 const registerUser = async (username, email, password, repassword) => {
     try {
         const res = await fetch(`${apiURL}/api/register`, {

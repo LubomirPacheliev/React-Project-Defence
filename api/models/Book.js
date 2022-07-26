@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
-        required: [true, "Name is required"],
+        required: [true, "Title is required"],
         validate: {
             validator: val => /^.*(?=.{1,}).*$/.test(val),
             message: 'Name must be longer than 1 character'

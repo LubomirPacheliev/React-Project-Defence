@@ -1,10 +1,10 @@
 const router = require('express').Router();
-import { createBook } from '../services/bookService';
-import { COOKIE_SESSION_NAME } from '../constants';
-import { validateJWT } from './userService';
+const { createBook } = require('../services/bookService');
+const { COOKIE_SESSION_NAME } = require('../constants');
+const { validateJWT } = require('../services/userService');
 
 router.post('/api/create', async (req, res) => {
-    const data = await req.json(req.body);
+    const data = await req.body;
     const cookie = req.cookies[COOKIE_SESSION_NAME];
 
     try {
