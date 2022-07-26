@@ -6,8 +6,8 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
-import Collection from "./Components/Colletion/Collection";
-import Create from "./Components/Colletion/Create/Create";
+import Collection from "./Components/Collection/Collection";
+import Create from "./Components/Collection/Create/Create";
 
 const App = () => {
   return (
