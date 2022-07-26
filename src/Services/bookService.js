@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { apiURL } from './apiURL';
+import { API_URL as apiURL } from '../constants';
 
 const createBook = async data => {
     try {

@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { apiURL } from './apiURL';
+import { API_URL as apiURL } from '../constants';
 
 // TODO: catch blocks should do more than just log errors
 const registerUser = async (username, email, password, repassword) => {

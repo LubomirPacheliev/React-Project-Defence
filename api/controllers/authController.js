@@ -45,7 +45,7 @@ router.get('/api/validate', async (req, res) => {
         if (!jwtCookie) res.json({}).end();
         const decoded = (await userService.validateJWT(jwtCookie))[0];
         if (!decoded) res.json({ msg: "Auth cookie is not valid." }).end();
-        res.json({ validated: jwtCookie });
+        res.json({ validated: decoded }); // ! TODO: Make sure it's okay to return a decoded version
     } catch (e) {
         console.error(e);
     }

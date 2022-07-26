@@ -3,12 +3,12 @@ import Book from './Book/Book';
 import { Link } from 'react-router-dom';
 import { getAllBooks } from '../../Services/bookService';
 import { useAuthenticator as getCookie } from '../../Hooks/userHooks';
+import { ADMIN_ID as ADMIN } from '../../constants';
 import "./Collection.scss";
 
-const Collection = () => { // TODO: Check for async compoonents, don't forget ab header
+const Collection = () => {
     const [books, setBooks] = useState([]);
     const [user, setUser] = useState();
-    const ADMIN = '62dd304d7eae4b50a0414204'; // TODO: Think of a better place to put this
 
     const getBooks = async () => {
         const books = await getAllBooks();
@@ -24,7 +24,7 @@ const Collection = () => { // TODO: Check for async compoonents, don't forget ab
         getUser();
     }, [setBooks, setUser]);
 
-    return (
+    return ( // TODO: Image loads full size and becomes small
         <section className="collection">
             <h1>Our Collection</h1>
             <h1>(15 Titles)</h1>
