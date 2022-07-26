@@ -11,6 +11,7 @@ router.post('/api/register', async (req, res) => {
         const token = await userService.registerUser(username, email, password);
         res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
     } catch (e) {
+        res.json({ msg: e });
         console.error(e);
     }
 
@@ -24,6 +25,7 @@ router.post('/api/login', async (req, res) => {
         const token = await userService.loginUser(email, password);
         res.cookie(COOKIE_SESSION_NAME, token, { httpOnly: true });
     } catch (e) {
+        res.json({ msg: e });
         console.error(e);
     }
 
@@ -45,6 +47,7 @@ router.get('/api/validate', async (req, res) => {
         if (!decoded) res.json({ msg: "Auth cookie is not valid." }).end();
         res.json({ validated: jwtCookie });
     } catch (e) {
+        res.json({ msg: e });
         console.error(e);
     }
 
