@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    username: { // TODO: unique IDs so that users can have the same name
+    username: {
         type: String,
         required: [true, 'Username is required.']
     },

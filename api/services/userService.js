@@ -40,7 +40,7 @@ const findUserByEmail = async email => {
 const generateJWT = async user => {
     try {
         const payload = { _id: user._id, username: user.username };
-        return jwt.sign(payload, SECRET, { expiresIn: '2d' }); // TODO: Probably has to be done with new Promise
+        return jwt.sign(payload, SECRET, { expiresIn: '2d' });
     } catch (e) {
         console.error(`Problem with JWT. Error: ${e}`);
     }

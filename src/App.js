@@ -8,6 +8,7 @@ import Register from "./Components/Authentication/Register/Register";
 import Login from "./Components/Authentication/Login/Login";
 import Collection from "./Components/Collection/Collection";
 import Create from "./Components/Collection/Create/Create";
+import Details from "./Components/Collection/Details/Details";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/collections" element={<Collection />} />
             <Route path="/collections/create" element={<Create />} />
+            <Route path="/collections/:id" element={<Details />} />
           </Routes>
         </AuthGuard>
       </BrowserRouter>

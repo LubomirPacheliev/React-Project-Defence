@@ -16,12 +16,13 @@ const getAllBooks = async () => {
     return books;
 }
 
-const findBookByOwner = async owner => {
-    const book = await bookModel.find({ owner: owner });
+const getBookByID = async id => {
+    const book = await bookModel.find({ _id: id });
     return book;
 }
 
 module.exports = {
     createBook,
-    getAllBooks
+    getAllBooks,
+    getBookByID
 };

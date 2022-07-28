@@ -22,3 +22,5 @@ const useAuthenticator = async (setCookiePresence) => { // ! Supposed to be used
 export {
     useAuthenticator
 }
+
+// TODO: Check if you're not setting a state after using this, you're stupid

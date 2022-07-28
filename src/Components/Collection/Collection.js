@@ -31,7 +31,7 @@ const Collection = () => {
             {user && ((user._id === ADMIN) && <Link className='create' to="/collections/create">Add Book</Link>)}
             <section className="books">
                 {books.map((book, id) =>
-                    < Book img={book.image} title={book.title} key={id} />
+                    <Book img={book.image} title={book.title} key={id} _id={book._id} />
                 )}
             </section>
         </section>

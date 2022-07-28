@@ -39,4 +39,3 @@ const Header = () => {
 }
 
 export default Header;
-// TODO: Check the best way to validate a cookie when entering the website
