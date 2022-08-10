@@ -20,6 +20,25 @@ const createBook = async data => { // TODO: Could make a fetch get/post function
     }
 }
 
+const editBook = async (data, id) => {
+    try {
+        const res = await fetch(`${apiURL}/api/edit/${id}`, {
+            mode: "cors",
+            credentials: "include",
+            method: 'post',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!res.ok) throw new Error('Create operation failed.');
+        return res;
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+}
+
 const getAllBooks = async () => {
     try {
         const res = await fetch(`${apiURL}/api/books`, {
@@ -53,6 +72,7 @@ const getBookByID = async (id, signal) => {
 
 export {
     createBook,
+    editBook,
     getAllBooks,
     getBookByID
 };

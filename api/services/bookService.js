@@ -11,6 +11,22 @@ const createBook = async (data, user) => {
     }
 }
 
+const editBook = async (data, id) => {
+    const book = (await getBookByID(id))[0];
+    const { title, description, image, author, price } = data;
+
+    try {
+        book.title = title;
+        book.description = description;
+        book.image = image;
+        book.author = author;
+        book.price = price;
+        await book.save();
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 const getAllBooks = async () => {
     const books = await bookModel.find({});
     return books;
@@ -23,6 +39,7 @@ const getBookByID = async id => {
 
 module.exports = {
     createBook,
+    editBook,
     getAllBooks,
     getBookByID
 };

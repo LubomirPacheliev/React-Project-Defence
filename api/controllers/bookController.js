@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createBook, getAllBooks, getBookByID } = require('../services/bookService');
+const { createBook, editBook, getAllBooks, getBookByID } = require('../services/bookService');
 const { COOKIE_SESSION_NAME } = require('../constants');
 const { validateJWT } = require('../services/userService');
 
@@ -11,6 +11,20 @@ router.post('/api/create', async (req, res) => {
         const user = (await validateJWT(cookie))[0];
         if (!user) throw new Error('Invalid cookie.');
         await createBook(data, user);
+    } catch (e) {
+        res.json({ msg: e });
+        console.error(e);
+    }
+
+    res.end();
+});
+
+router.post('/api/edit/:id', async (req, res) => {
+    const data = await req.body;
+    const id = req.params.id;
+
+    try {
+        await editBook(data, id);
     } catch (e) {
         res.json({ msg: e });
         console.error(e);

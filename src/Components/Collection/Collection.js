@@ -3,7 +3,7 @@ import Book from './Book/Book';
 import { Link } from 'react-router-dom';
 import { getAllBooks } from '../../Services/bookService';
 import { useAuthenticator as getCookie } from '../../Hooks/userHooks';
-import { ADMIN_ID as ADMIN } from '../../constants';
+import { ADMIN_ID as ADMIN } from '../../constants'; // TODO: Implement an admin code you can assign instead of hardcoding an _id check
 import "./Collection.scss";
 
 const Collection = () => {
@@ -22,13 +22,13 @@ const Collection = () => {
     useEffect(() => {
         getBooks();
         getUser();
-    }, [setBooks, setUser]);
+    }, []);
 
     return ( // TODO: Image loads full size and becomes small
         <section className="collection">
             <h1>Our Collection</h1>
             <h1>(15 Titles)</h1>
-            {user && ((user._id === ADMIN) && <Link className='create' to="/collections/create">Add Book</Link>)}
+            {(user) && <Link className='create' to="/collections/create">Add Book</Link>}
             <section className="books">
                 {books.map((book, id) =>
                     <Book img={book.image} title={book.title} key={id} _id={book._id} />

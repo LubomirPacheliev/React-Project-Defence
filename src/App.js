@@ -9,6 +9,7 @@ import Login from "./Components/Authentication/Login/Login";
 import Collection from "./Components/Collection/Collection";
 import Create from "./Components/Collection/Create/Create";
 import Details from "./Components/Collection/Details/Details";
+import Edit from "./Components/Collection/Edit/Edit";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/collections" element={<Collection />} />
             <Route path="/collections/create" element={<Create />} />
             <Route path="/collections/:id" element={<Details />} />
+            <Route path="/collections/edit/:id" element={<Edit />} />
           </Routes>
         </AuthGuard>
       </BrowserRouter>
