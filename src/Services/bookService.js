@@ -70,9 +70,24 @@ const getBookByID = async (id, signal) => {
     }
 }
 
+const deleteBookByID = async (id) => {
+    try {
+        const res = await fetch(`${apiURL}/api/books/${id}/delete`, {
+            mode: "cors",
+            credentials: "include"
+        });
+        if (!res.ok) throw new Error('Create operation failed.');
+        return res;
+    } catch (e) {
+        console.error(e);
+        return e;
+    }
+}
+
 export {
     createBook,
     editBook,
     getAllBooks,
-    getBookByID
+    getBookByID,
+    deleteBookByID
 };

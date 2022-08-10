@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGetBook as getBookByID } from '../../../Hooks/bookHooks';
 import { useAuthenticator as getUser } from '../../../Hooks/userHooks';
+import { deleteBookByID } from '../../../Services/bookService';
 import './Details.scss';
 
 const Details = () => {
@@ -12,6 +13,11 @@ const Details = () => {
 
     const handleEditClick = e => {
         navigate('/collections/edit/' + id);
+    }
+
+    const handleDeleteClick = async e => {
+        await deleteBookByID(id);
+        navigate('/collections/');
     }
 
     const getBook = async id => {
@@ -32,7 +38,7 @@ const Details = () => {
             <h3>{book.price}</h3>
             {(user._id === book.owner) && <article className='owner-article'>
                 <button onClick={handleEditClick}>edit</button>
-                <button>delete</button>
+                <button onClick={handleDeleteClick}>delete</button>
             </article>}
         </section>}
     </>);

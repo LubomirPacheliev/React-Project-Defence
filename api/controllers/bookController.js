@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createBook, editBook, getAllBooks, getBookByID } = require('../services/bookService');
+const { createBook, editBook, deleteBookByID, getAllBooks, getBookByID } = require('../services/bookService');
 const { COOKIE_SESSION_NAME } = require('../constants');
 const { validateJWT } = require('../services/userService');
 
@@ -42,6 +42,12 @@ router.get('/api/books/:id', async (req, res) => {
     const id = req.params.id;
     const book = await getBookByID(id);
     res.json(book).end();
+});
+
+router.get('/api/books/:id/delete', async (req, res) => {
+    const id = req.params.id;
+    await deleteBookByID(id);
+    res.end();
 });
 
 module.exports = router;

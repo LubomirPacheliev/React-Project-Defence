@@ -27,6 +27,10 @@ const editBook = async (data, id) => {
     }
 }
 
+const deleteBookByID = async id => {
+    return await bookModel.find({ _id: id }).deleteOne();
+}
+
 const getAllBooks = async () => {
     const books = await bookModel.find({});
     return books;
@@ -40,6 +44,7 @@ const getBookByID = async id => {
 module.exports = {
     createBook,
     editBook,
+    deleteBookByID,
     getAllBooks,
     getBookByID
 };
